@@ -30,4 +30,13 @@ TEST_CASE("AppendDB with mocked index") {
 		auto answer = std::is_base_of<MockedIndex, AppendDB<Entry, MockedIndex>>::value;
 		REQUIRE(answer);
 	}
+
+	SECTION("derives publicly from the given index class") {
+		class MockedIndex {
+		public:
+			int mocked_property = 42;
+		};
+		auto db = AppendDB<Entry, MockedIndex>::create();
+		REQUIRE(db.mocked_property == 42);
+	}
 }
