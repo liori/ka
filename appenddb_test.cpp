@@ -24,12 +24,10 @@ TEST_CASE("AppendDB") {
 
 TEST_CASE("AppendDB with mocked index") {
 	class Entry { };
-	class MockedIndex { };
-
-	auto db = AppendDB<Entry, MockedIndex>::create();
 
 	SECTION("derives from the given index class") {
-		auto answer = std::is_base_of<MockedIndex, decltype(db)>::value;
+		class MockedIndex { };
+		auto answer = std::is_base_of<MockedIndex, AppendDB<Entry, MockedIndex>>::value;
 		REQUIRE(answer);
 	}
 }
