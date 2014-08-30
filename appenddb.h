@@ -1,4 +1,6 @@
 class AppendDB {
+	int message_count = 0;
+
 public:
 	class Entry {
 	public:

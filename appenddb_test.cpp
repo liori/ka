@@ -19,5 +19,9 @@ TEST_CASE("AppendDB") {
 		auto const m = AppendDB::Entry::create();
 
 		db.append(m);
+
+		SECTION("and the message count increases afterwards") {
+			REQUIRE(const_db.get_messages_count() == 1);
+		}
 	}
 }

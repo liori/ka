@@ -9,7 +9,9 @@ AppendDB AppendDB::create() {
 }
 
 int AppendDB::get_messages_count() const {
-	return 0;
+	return this->message_count;
 }
 
-void AppendDB::append(Entry const e) { }
+void AppendDB::append(Entry const e) {
+	this->message_count++;
+}
