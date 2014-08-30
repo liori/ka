@@ -1,5 +1,5 @@
 template<typename Entry, typename ...T>
-class AppendDB {
+class AppendDB : T... {
 	int message_count = 0;
 
 public:
