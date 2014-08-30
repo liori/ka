@@ -1,5 +1,9 @@
 #include "appenddb.h"
 
+AppendDB::Entry AppendDB::Entry::create() {
+	return AppendDB::Entry();
+}
+
 AppendDB AppendDB::create() {
 	return AppendDB();
 }
