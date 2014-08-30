@@ -14,4 +14,10 @@ TEST_CASE("AppendDB") {
 	SECTION("after creating is empty") {
 		REQUIRE(const_db.get_messages_count() == 0);
 	}
+
+	SECTION("can store an entry") {
+		auto const m = AppendDB::Entry::create();
+
+		db.append(m);
+	}
 }
