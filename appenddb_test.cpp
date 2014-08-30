@@ -3,7 +3,7 @@
 
 TEST_CASE("AppendDB Entry") {
 	SECTION("can be created") {
-		auto m = AppendDB::Entry::create();
+		AppendDB::Entry::create();
 	}
 }
 
