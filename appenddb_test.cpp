@@ -25,3 +25,9 @@ TEST_CASE("AppendDB") {
 		}
 	}
 }
+
+TEST_CASE("AppendDB with mocked index") {
+	class MockedIndex { };
+
+	AppendDB<MockedIndex>::create();
+}
