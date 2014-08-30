@@ -39,4 +39,18 @@ TEST_CASE("AppendDB with mocked index") {
 		auto db = AppendDB<Entry, MockedIndex>::create();
 		REQUIRE(db.mocked_property == 42);
 	}
+
+	SECTION("calls Index to store entries") {
+		class MockedIndex {
+		public:
+			int value_passed = 0;
+			void update(int const e) {
+				this->value_passed = e;
+			}
+		};
+		auto db = AppendDB<int, MockedIndex>::create();
+
+		db.append(42);
+		REQUIRE(db.value_passed == 42);
+	}
 }

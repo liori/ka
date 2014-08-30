@@ -12,6 +12,7 @@ public:
 	}
 
 	void append(Entry const e) {
+		[](...){}((T::update(e), 0)...);
 		this->message_count++;
 	}
 };
