@@ -70,3 +70,16 @@ TEST_CASE("TotalCount") {
 		REQUIRE(const_tc.get_total_messages_count() == 2);
 	}
 }
+
+TEST_CASE("AppendDB with TotalCount") {
+	auto db = AppendDB<int, TotalCount>();
+	auto const& const_db = db;
+
+	SECTION("work together") {
+		REQUIRE(const_db.get_total_messages_count() == 0);
+		db.append(42);
+		REQUIRE(const_db.get_total_messages_count() == 1);
+		db.append(37);
+		REQUIRE(const_db.get_total_messages_count() == 2);
+	}
+}
