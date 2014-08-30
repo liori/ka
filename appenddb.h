@@ -16,3 +16,5 @@ public:
 		this->message_count++;
 	}
 };
+
+class TotalCount { };

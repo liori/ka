@@ -54,3 +54,7 @@ TEST_CASE("AppendDB with mocked index") {
 		REQUIRE(db.value_passed == 42);
 	}
 }
+
+TEST_CASE("TotalCount") {
+	TotalCount();
+}
