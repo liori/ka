@@ -1,15 +1,8 @@
-template<typename ...T>
+template<typename Entry, typename ...T>
 class AppendDB {
 	int message_count = 0;
 
 public:
-	class Entry {
-	public:
-		static Entry create() {
-			return AppendDB::Entry();
-		}
-	};
-
 	static AppendDB create() {
 		return AppendDB();
 	}

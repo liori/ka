@@ -1,14 +1,10 @@
 #include <catch.hpp>
 #include "appenddb.h"
 
-TEST_CASE("AppendDB Entry") {
-	SECTION("can be created") {
-		AppendDB<>::Entry::create();
-	}
-}
-
 TEST_CASE("AppendDB") {
-	auto db = AppendDB<>::create();
+	class Entry { };
+
+	auto db = AppendDB<Entry>::create();
 	auto const& const_db = db;
 
 	SECTION("after creating is empty") {
@@ -16,7 +12,7 @@ TEST_CASE("AppendDB") {
 	}
 
 	SECTION("can store an entry") {
-		auto const m = AppendDB<>::Entry::create();
+		auto const m = Entry();
 
 		db.append(m);
 
@@ -27,7 +23,8 @@ TEST_CASE("AppendDB") {
 }
 
 TEST_CASE("AppendDB with mocked index") {
+	class Entry { };
 	class MockedIndex { };
 
-	AppendDB<MockedIndex>::create();
+	AppendDB<Entry, MockedIndex>::create();
 }
