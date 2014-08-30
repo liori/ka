@@ -17,4 +17,9 @@ public:
 	}
 };
 
-class TotalCount { };
+class TotalCount {
+public:
+	int get_total_messages_count() const {
+		return 0;
+	}
+};

@@ -56,5 +56,10 @@ TEST_CASE("AppendDB with mocked index") {
 }
 
 TEST_CASE("TotalCount") {
-	TotalCount();
+	auto tc = TotalCount();
+	auto const& const_tc = tc;
+
+	SECTION("is zero on startup") {
+		REQUIRE(const_tc.get_total_messages_count() == 0);
+	}
 }
