@@ -3,12 +3,12 @@
 
 TEST_CASE("AppendDB Entry") {
 	SECTION("can be created") {
-		AppendDB::Entry::create();
+		AppendDB<>::Entry::create();
 	}
 }
 
 TEST_CASE("AppendDB") {
-	auto db = AppendDB::create();
+	auto db = AppendDB<>::create();
 	auto const& const_db = db;
 
 	SECTION("after creating is empty") {
@@ -16,7 +16,7 @@ TEST_CASE("AppendDB") {
 	}
 
 	SECTION("can store an entry") {
-		auto const m = AppendDB::Entry::create();
+		auto const m = AppendDB<>::Entry::create();
 
 		db.append(m);
 
