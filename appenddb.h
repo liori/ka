@@ -18,8 +18,13 @@ public:
 };
 
 class TotalCount {
+	int count = 0;
 public:
 	int get_total_messages_count() const {
-		return 0;
+		return this->count;
+	}
+
+	void update(...) {
+		this->count++;
 	}
 };

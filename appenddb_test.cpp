@@ -62,4 +62,11 @@ TEST_CASE("TotalCount") {
 	SECTION("is zero on startup") {
 		REQUIRE(const_tc.get_total_messages_count() == 0);
 	}
+
+	SECTION("increments counter on updates") {
+		tc.update(42);
+		REQUIRE(const_tc.get_total_messages_count() == 1);
+		tc.update(37);
+		REQUIRE(const_tc.get_total_messages_count() == 2);
+	}
 }
