@@ -4,7 +4,7 @@
 TEST_CASE("AppendDB") {
 	class Entry { };
 
-	auto db = AppendDB<Entry>::create();
+	auto db = AppendDB<>::create();
 
 	SECTION("can store an entry") {
 		auto const m = Entry();
@@ -14,11 +14,9 @@ TEST_CASE("AppendDB") {
 }
 
 TEST_CASE("AppendDB with mocked index") {
-	class Entry { };
-
 	SECTION("derives from the given index class") {
 		class MockedIndex { };
-		auto answer = std::is_base_of<MockedIndex, AppendDB<Entry, MockedIndex>>::value;
+		auto answer = std::is_base_of<MockedIndex, AppendDB<MockedIndex>>::value;
 		REQUIRE(answer);
 	}
 
@@ -27,7 +25,7 @@ TEST_CASE("AppendDB with mocked index") {
 		public:
 			int mocked_property = 42;
 		};
-		auto db = AppendDB<Entry, MockedIndex>::create();
+		auto db = AppendDB<MockedIndex>::create();
 		REQUIRE(db.mocked_property == 42);
 	}
 
@@ -39,7 +37,7 @@ TEST_CASE("AppendDB with mocked index") {
 				this->value_passed = e;
 			}
 		};
-		auto db = AppendDB<int, MockedIndex>::create();
+		auto db = AppendDB<MockedIndex>::create();
 
 		db.append(42);
 		REQUIRE(db.value_passed == 42);
@@ -63,7 +61,7 @@ TEST_CASE("TotalCount") {
 }
 
 TEST_CASE("AppendDB with TotalCount") {
-	auto db = AppendDB<int, TotalCount>();
+	auto db = AppendDB<TotalCount>();
 	auto const& const_db = db;
 
 	SECTION("work together") {
